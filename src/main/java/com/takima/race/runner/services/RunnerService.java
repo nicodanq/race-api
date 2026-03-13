@@ -4,6 +4,11 @@ import com.takima.race.runner.entities.Runner;
 import com.takima.race.runner.repositories.RunnerRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -30,7 +35,21 @@ public class RunnerService {
         );
     }
 
+    // POST /runners
+    @PostMapping
     public Runner createRunner(Runner runner) {
         return runnerRepository.save(runner);
+    }
+
+    // DELETE /runners/{id}
+    @DeleteMapping("/{id}")
+    public void deleteRunner( Long id) {
+        runnerRepository.deleteById(id);
+    }
+
+    // PUT /runners/{id}
+    @PutMapping("/id")
+    public Runner updateRunner(){
+        
     }
 }

@@ -2,9 +2,12 @@ package com.takima.race.runner.controllers;
 
 import com.takima.race.runner.entities.Runner;
 import com.takima.race.runner.services.RunnerService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +33,13 @@ public class RunnerController {
     }
 
     @PostMapping
-    public Runner createRunner(Runner runner){
+    public Runner createRunner(@RequestBody Runner runner) {
         return runnerService.createRunner(runner);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteRunner(@PathVariable Long id){
+        runnerService.deleteRunner(id);
+        return "Runner deleted successfully :"+id;
     }
 }
