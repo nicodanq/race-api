@@ -4,6 +4,7 @@ import com.takima.race.runner.entities.Runner;
 import com.takima.race.runner.services.RunnerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +27,10 @@ public class RunnerController {
     @GetMapping("/{id}")
     public Runner getById(@PathVariable Long id) {
         return runnerService.getById(id);
+    }
+
+    @PostMapping
+    public Runner createRunner(Runner runner){
+        return runnerService.createRunner(runner);
     }
 }

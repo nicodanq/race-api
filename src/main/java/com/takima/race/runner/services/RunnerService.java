@@ -29,4 +29,8 @@ public class RunnerService {
                 )
         );
     }
+
+    public Runner createRunner(Runner runner) {
+        return runnerRepository.save(runner);
+    }
 }
