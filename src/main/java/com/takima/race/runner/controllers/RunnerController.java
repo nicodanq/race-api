@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,5 +42,11 @@ public class RunnerController {
     public String deleteRunner(@PathVariable Long id){
         runnerService.deleteRunner(id);
         return "Runner deleted successfully :"+id;
+    }
+
+    @PutMapping("/id")
+    public Runner udpateRunner (@RequestBody Runner runner, @PathVariable Long id ){
+        //on appelle le service pour faire la modification en base de données
+        return runnerService.updateRunner(runner, id);
     }
 }
