@@ -49,11 +49,11 @@ public class RunnerService {
     public Runner updateRunner(Runner runner, Long id){
         //logique métier pour mettre a jour le runner avec les nouvelles données
         //recuperer le runner
-        Runner runner_to_update = runnerRepository.findById(id).orElseTHrow(()->new RuntimeException("Runner id didn't find"));
+        Runner runner_to_update = runnerRepository.findById(id).orElseThrow(()->new RuntimeException("Runner id not found"));
         runner_to_update.setAge(runner.getAge());
-        runner_to_update.setFirstName(runner.getFirstName()),
-        runner_to_update.setLastName(runner.getLastName()),
-        runner_to_update.setEmail(runner.getEmail())
+        runner_to_update.setFirstName(runner.getFirstName());
+        runner_to_update.setLastName(runner.getLastName());
+        runner_to_update.setEmail(runner.getEmail());
 
 
         //enregistrer les nouvelles données du runner
