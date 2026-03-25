@@ -32,6 +32,9 @@ public class RunnerService {
 
     // POST /runners
     public Runner createRunner(Runner runner) {
+        if (runner.getEmail() == null || !runner.getEmail().contains("@")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid email address");
+        }
         return runnerRepository.save(runner);
     }
 
@@ -41,7 +44,10 @@ public class RunnerService {
     }
 
     // PUT /runners/{id}
-    public Runner updateRunner(Runner runner, Long id){
+    public Runner updateRunner(Runner runner, Long id) {
+        if (runner.getEmail() == null || !runner.getEmail().contains("@")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid email address");
+        }
         //logique métier pour mettre a jour le runner avec les nouvelles données
         //recuperer le runner
         Runner runner_to_update = runnerRepository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Runner id not found"));
