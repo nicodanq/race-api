@@ -37,6 +37,16 @@ public class RaceService {
         return raceRepository.save(race);
     }
 
+    public Race updateRace(Race race, Long id) {
+        Race raceToUpdate = raceRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Race " + id + " not found"));
+        raceToUpdate.setName(race.getName());
+        raceToUpdate.setDate(race.getDate());
+        raceToUpdate.setLocation(race.getLocation());
+        raceToUpdate.setMaxParticipants(race.getMaxParticipants());
+        return raceRepository.save(raceToUpdate);
+    }
+
     public Integer countRegisterInRace(Long valraceId){
         return registrationRepository.countRunnersByRaceId(valraceId);
     }

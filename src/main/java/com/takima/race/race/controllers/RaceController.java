@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -38,6 +39,11 @@ public class RaceController {
     @ResponseStatus(HttpStatus.CREATED)
     public Race createRace(@RequestBody Race race) {
         return raceService.createRace(race);
+    }
+
+    @PutMapping("/{id}")
+    public Race updateRace(@RequestBody Race race, @PathVariable Long id) {
+        return raceService.updateRace(race, id);
     }
 
     @GetMapping("/{raceId}/participants/count")
