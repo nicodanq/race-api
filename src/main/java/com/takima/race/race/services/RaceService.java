@@ -20,7 +20,10 @@ public class RaceService {
         this.registrationRepository = registrationRepository;
     }
 
-    public List<Race> getAll() {
+    public List<Race> getAll(String location) {
+        if (location != null) {
+            return raceRepository.findAllByLocation(location);
+        }
         return raceRepository.findAll();
     }
 
