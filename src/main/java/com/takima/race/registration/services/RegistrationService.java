@@ -10,7 +10,7 @@ import com.takima.race.registration.entities.Registration;
 import com.takima.race.registration.repositories.RegistrationRepository;
 import com.takima.race.runner.repositories.RunnerRepository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,7 +60,7 @@ public class RegistrationService {
         Registration registration = new Registration();
         registration.setRunnerId(runnerId);
         registration.setRaceId(raceId);
-        registration.setRegistrationDate(new Date());
+        registration.setRegistrationDate(LocalDate.now());
         return registrationRepository.save(registration);
     }
 }
