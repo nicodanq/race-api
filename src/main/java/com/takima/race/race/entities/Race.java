@@ -1,12 +1,14 @@
-package com.takima.race.runner.entities;
+package com.takima.race.race.entities;
 
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

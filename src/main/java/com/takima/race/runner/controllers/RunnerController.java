@@ -44,7 +44,7 @@ public class RunnerController {
         return "Runner deleted successfully :"+id;
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Runner udpateRunner (@RequestBody Runner runner, @PathVariable Long id ){
         //on appelle le service pour faire la modification en base de données
         return runnerService.updateRunner(runner, id);

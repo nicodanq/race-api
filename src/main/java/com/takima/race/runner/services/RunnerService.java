@@ -44,7 +44,7 @@ public class RunnerService {
     public Runner updateRunner(Runner runner, Long id){
         //logique métier pour mettre a jour le runner avec les nouvelles données
         //recuperer le runner
-        Runner runner_to_update = runnerRepository.findById(id).orElseThrow(()->new RuntimeException("Runner id not found"));
+        Runner runner_to_update = runnerRepository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Runner id not found"));
         runner_to_update.setAge(runner.getAge());
         runner_to_update.setFirstName(runner.getFirstName());
         runner_to_update.setLastName(runner.getLastName());
